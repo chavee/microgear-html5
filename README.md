@@ -19,14 +19,14 @@ Make sure ther following ports are allowed to connect from your network.
 Download microgear.js here
 https://raw.githubusercontent.com/netpieio/microgear-html5/master/microgear.js
 
-Or call it directly from the website netpie.io by using this tag
+Or refer to the latest version directly from the cdn using this tag
 ```html
-<script src="https://netpie.io/microgear.js"></script>
+<script src="https://cdn.netpie.io/microgear.js"></script>
 ```
 
 Usage Example
 ```js
-<script src="https://netpie.io/microgear.js"></script>
+<script src="https://cdn.netpie.io/microgear.js"></script>
 <script>
   const APPID     = <APPID>;
   const APPKEY    = <APPKEY>;
@@ -144,6 +144,18 @@ microgear.subscribe("/outdoor/temp");
 
 ```js
 microgear.unsubscribe("/outdoor/temp");
+```
+---
+**void microgear.writeFeed (*feedid*, *datajson* [, *apikey*])**
+write time series data to a feed storage
+
+**arguments**
+* *feedid* `string` - name of the feed 
+* *datajson* `string` - data in json format 
+* *apikey* `string` - apikey for authorization. If apikey is not specified, you will need to allow the AppID to access feed and then the default apikey will be assigned automatically.
+
+```js
+microgear.writeFeed("homesensor",{temp:25.7,humid:62.8,light:8.5});
 ```
 ---
 **void microgear.resetToken (callback)**
